@@ -39,6 +39,7 @@ int main()
     planilla empleado[n];
     float promedio = 0.0;
     int cat_a = 0, cat_b = 0, cat_c = 0;
+    int emp_cienta[n], edad_cincuenta[n];
 
     printf("*******   EMPLEADO   *******");
     for (int i = 0; i < n; i++)
@@ -51,6 +52,12 @@ int main()
         printf("EDAD: ");
         scanf("%d",&empleado[i].edad);
         getchar(); //Limpiar el buffer de entrada
+
+        if(empleado[i].edad > 50)
+        {
+            emp_cienta[i] = empleado[i].nom_ape;
+            edad_cincuenta[i] = empleado[i].edad;
+        }
 
         printf("CATEGORIA (A-B-C): ");
         scanf("%c",&empleado[i].categoria);
