@@ -1,9 +1,25 @@
 #include <stdio.h>
 #include <string.h>
-#include "stdlib.h" // Para system()
+#include <stdlib.h> // Para system()
 //#include <windows.h>
 #define n 2
 #define _long 50
+
+void ord_emp_may(int edades[n], char nya_emp[_long])
+{
+    int aux;
+    char aux_nya[_long];
+
+    for(int i=0; i<n; i++)
+        for(int j=i+1; j<n; j++)
+            if(edades[i]>edades[j])
+            {
+                aux = edades[i];
+                strcpy(aux_nya,nya_emp);
+                edades[i] = edades[j];
+                edades[j] = aux;
+            }
+}
 
 int cat_emp(char tip_cat, char letra_m, char letra_M)
 {
@@ -23,7 +39,6 @@ void ctd_cat(int tipo_cat, int letra)
     {
         printf("\nCATEGORIA %c: %d",letra,tipo_cat);
     }
-    
 }
 
 typedef struct 
@@ -53,11 +68,7 @@ int main()
         scanf("%d",&empleado[i].edad);
         getchar(); //Limpiar el buffer de entrada
 
-        if(empleado[i].edad > 50)
-        {
-            emp_cienta[i] = empleado[i].nom_ape;
-            edad_cincuenta[i] = empleado[i].edad;
-        }
+        ord_emp_may(empleado[i].edad,empleado[i].nom_ape);
 
         printf("CATEGORIA (A-B-C): ");
         scanf("%c",&empleado[i].categoria);
